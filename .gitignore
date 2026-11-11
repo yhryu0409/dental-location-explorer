@@ -1,0 +1,41 @@
+# Local credentials and overrides
+.env
+.env.*
+!.env.example
+
+# Runtime data belongs outside source control
+var/
+data/
+raw/
+staging/
+core/
+mart/
+releases/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Build output
+build/
+dist/
+*.egg-info/
+
+# Editor and operating-system files
+.DS_Store
+.idea/
+.vscode/
+
+# Full research data and machine-specific operations
+/research/
+/tmp/
+/outputs/

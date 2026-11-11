@@ -1,0 +1,9 @@
+# Exact M1 test environment for Python 3.9. Runtime dependencies are empty.
+pytest==8.3.5
+exceptiongroup==1.2.2; python_version < "3.11"
+iniconfig==2.1.0
+packaging==24.2
+pluggy==1.6.0
+Pygments==2.18.0
+tomli==2.2.1; python_version < "3.11"
+colorama==0.4.6; sys_platform == "win32"
