@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>개원 입지 탐색 · 전국</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/destination.css"></head><body>
+<header><div><span class="brand">DENTAL / LOCATION LAB</span><h1>어디에 개원할까?</h1></div><div class="header-right"><a href="/destination.html">목적지 수요·전국 순위</a><a href="/clusters.html">생활권별 의료 집적</a><span id="vintage">자료 확인 중</span><button id="compareToggle">후보 비교 <b id="compareCount">0</b></button></div></header>
+<details id="scoreSources" class="source-vintages"><summary>순위에 반영된 자료</summary><p id="scoreSourceText">자료 기준을 확인하는 중…</p></details>
+<div class="notice">연구 모형 · 신규 1명 몫은 환자 수나 매출 예측이 아닙니다. 최신 수집기 결과가 아닌 검증된 연구 릴리스를 사용합니다. <button id="methodToggle">자료·산정 기준</button></div>
+<section id="method" hidden></section>
+<div class="notice"><a href="/strategy.html">로컬 정착형 / 생활권 성장형 · 기본 배분식으로 비교 →</a> · <a href="/opportunity.html">보류된 원점 재배분 실험</a></div>
+<div class="workspace">
+<aside class="sidebar"><div class="filters">
+<label>탐색 지역<select id="region"><option>불러오는 중</option></select></label>
+<label>주소·도로명 검색<input id="search" type="search" placeholder="명촌, 구영리, 수원…"></label>
+<div class="two"><label>정렬<select id="sort"><option value="entry_market_population_equivalent">신규 1명 몫</option><option value="shock_score">동일 거점 +1명 후</option><option value="assigned_population_union">상권 전체 배분인구</option><option value="age_score">연령 보정 (울산)</option></select></label><label>유형<select id="type"><option value="">전체</option><option value="ordinary">일반 후보</option><option value="emerging">선점형</option></select></label></div>
+<label>최소 상권 배분인구<input id="minPop" type="number" min="0" step="1000" value="0"></label>
+<label class="check"><input id="pending" type="checkbox"> 보류·제외 후보도 보기 (순위 제외)</label>
+<div id="listStatus" role="status" aria-live="polite"></div></div><div id="list"></div><button id="more" hidden>후보 더 보기</button></aside>
+<main><div class="mapbar"><div><span class="eyebrow">전국 → 지역 → 생활권 → 거점</span><strong id="mapTitle">울산 후보 탐색</strong></div><div class="layers"><label><input type="checkbox" id="showBounds" checked> 상권</label><label><input type="checkbox" id="showDental" checked> 치과</label><label><input type="checkbox" id="showMedical"> 의과·한의</label><select id="popMode" aria-label="인구점 표시"><option value="off">인구점 끄기</option><option value="contribution">내 몫 기여도</option><option value="residents">원래 주민 인구</option></select></div></div>
+<div id="map" aria-label="개원 후보와 주변 경쟁 지도"></div><div class="maplegend"><span class="dot teal"></span>선택 후보 <span class="dot blue"></span>기타 후보 <span class="dot red"></span>기존 치과 <span class="dot purple"></span>인구점 <span>인구점은 선택 후보에 기여하는 원점만 표시 · 경계 밖 치과도 경쟁에 포함</span></div>
+<div id="detailStatus" role="status" aria-live="polite">후보를 선택해 근거를 확인하세요.</div>
+<section id="neighborhood"><div class="section-head"><div><span class="eyebrow">같은 동네의 여러 상권을 함께 보기</span><h2>생활권 합산 · 탐색 시나리오</h2></div><div><button id="areaSeed">선택 후보의 상권으로 시작</button> <button id="areaClear">초기화</button></div></div>
+<p>지도 상권을 클릭해 ‘생활권에 추가’를 누르세요. 여러 조각의 전체 파이를 합산하되 기존 배분·외부 경쟁·개별 순위는 바꾸지 않습니다. 폐쇄 생활권 여부는 현장 판단이 필요합니다.</p>
+<div id="areaMembers"></div><button id="areaCalculate">생활권 합산 계산</button> <label><input id="areaOrigins" type="checkbox"> 생활권 배분 인구점 보기</label>
+<div id="areaStatus" role="status" aria-live="polite"></div><div id="areaResult"></div></section>
+<article id="detail"></article></main></div>
+<section id="comparison" hidden><div class="section-head"><div><span class="eyebrow">같은 지표 · 같은 기준</span><h2>명촌과 나란히 비교</h2></div><button id="closeCompare">닫기</button></div><p>명촌8길 8은 기준 후보로 고정합니다. 다른 후보는 최대 3개까지 추가할 수 있습니다.</p><div id="compareBody"></div></section>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script><script src="/destination-wide-math.js"></script><script src="/destination-preview.js"></script><script src="/medical-context.js"></script><script src="/cluster-context.js"></script><script src="/app.js"></script><script src="/score-sources.js"></script></body></html>

@@ -1,0 +1,19 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>생활권별 의료 집적</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/clusters.css"><link rel="stylesheet" href="/destination.css"></head><body>
+<header><div><span class="brand">DENTAL / LOCATION LAB</span><h1>생활권별 의료 집적</h1></div><nav class="cluster-nav"><a href="/strategy.html">기존 정착형·성장형 분석</a><a href="/destination.html">목적지 수요·전국 순위</a> · <a href="/index.html">기존 전국 순위</a></nav></header>
+<div class="notice">기존 상권·생활권 묶음을 그대로 사용합니다. 내부 의료기관, 주변 의료 집적, 시군구 유입 근거를 구분하며 기존 입지 점수는 유지합니다.</div>
+<section class="cluster-summary"><div id="overview"></div><details id="criteria"><summary>생활권 기준과 의료기관 연결 방법</summary><div id="definitionBody"></div></details></section>
+<div class="cluster-load"><span id="loadStatus" role="status" aria-live="polite">자료를 불러오는 중…</span><button id="retry" hidden>다시 불러오기</button></div>
+<div class="workspace cluster-workspace"><aside class="sidebar"><div class="filters">
+<label>생활권 단위<select id="mode"><option value="local">정착형 · 기존 로컬 생활권</option><option value="growth">성장형 · 기존 광역 생활권</option></select></label>
+<label>지역<select id="province"><option value="">전국</option></select></label>
+<label class="cluster-search">생활권·기관 검색<input id="search" type="search" placeholder="구리, 압구정, 서면…"></label>
+<label>내부 기관 구성<select id="clusterType"><option value="">전체 유형</option></select></label>
+<label>정렬<select id="sort"><option value="facility_count">내부 관측기관 수</option><option value="surrounding">주변 750m 관측기관 수</option><option value="entry">기존 치과 신규 1명 몫 · 중앙값</option></select></label>
+<label class="check"><input id="hasFlow" type="checkbox">시군구 유입자료가 연결된 곳</label><div id="listStatus" role="status"></div>
+</div><div id="list"></div><button id="more" hidden>더 보기</button></aside><main>
+<div class="mapbar"><strong id="mapTitle">기존 생활권 지도</strong><button id="fitMap">현재 목록을 지도에 보기</button></div>
+<label class="cluster-layer-control"><input type="checkbox" id="showSurrounding">주변 750m 의료기관·관측 범위 표시 (생활권 경계 아님)</label>
+<div id="map" aria-label="기존 생활권과 의료기관 지도"></div>
+<div class="maplegend">청록 영역: 기존 상권의 점포 기반 표시 영역 · 파랑: 내부 관측기관 · 빨강: 기존 후보 · 주황: 주변 관측기관(선택 표시)</div>
+<article id="detail"><div class="empty">생활권을 선택하세요.</div></article></main></div>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script><script src="/destination-wide-math.js"></script><script src="/destination-preview.js"></script><script src="/clusters.js"></script></body></html>

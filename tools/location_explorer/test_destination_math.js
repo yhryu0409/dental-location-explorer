@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),M=require('./destination-math.js');
+const d={groups:{g:{factors:{dental:.8,medical:.6,local:1}}},regions:{ok:{status:'ok',inbound_share:.7},held:{status:'boundary_review',inbound_share:null}},rows:[{node:'a',growth_id:'g',region_key:'ok',pending:false,base_percentile:50,base_rank:2},{node:'b',growth_id:'g',region_key:'held',pending:false,base_percentile:100,base_rank:1},{node:'c',growth_id:'g',region_key:'ok',pending:false,base_percentile:50,base_rank:2},{node:'p',growth_id:'g',region_key:'ok',pending:true,base_percentile:null,base_rank:null}]};
+const config=w=>({w,weights:{...M.defaults.weights}}),near=(a,b)=>assert.ok(Math.abs(a-b)<1e-10,`${a} != ${b}`);
+let r=M.calculate(d,config(.5));near(r.byNode.get('a').H,82);near(r.byNode.get('a').S,66);near(Object.values(r.byNode.get('a').components).reduce((a,b)=>a+b),82);near(r.byNode.get('a').basePart+r.byNode.get('a').destinationPart,r.byNode.get('a').S);
+assert.equal(r.byNode.get('a').rank,1);assert.equal(r.byNode.get('c').rank,1);assert.equal(r.byNode.get('a').referenceRank,1);assert.equal(r.byNode.get('a').rankChange,0);
+assert.equal(r.byNode.get('b').S,null);assert.deepEqual(r.byNode.get('b').missing,['flow']);assert.equal(r.eligible,2);
+r=M.calculate(d,config(0));assert.equal(r.eligible,3);assert.equal(r.byNode.get('b').S,100);assert.equal(r.byNode.get('b').H,null);assert.equal(r.byNode.get('b').destinationPart,0);for(const x of r.ranked){assert.equal(x.S,x.B);assert.equal(x.rank,x.row.base_rank);assert.equal(x.rankChange,0);}
+r=M.calculate(d,config(1));for(const x of r.ranked)assert.equal(x.S,x.H);
+const noFlow=config(.5);noFlow.weights.flow=0;r=M.calculate(d,noFlow);assert.equal(r.eligible,3);assert.equal(r.byNode.get('b').components.flow,0);assert.equal(r.byNode.get('b').values.flow,null);assert.equal(r.byNode.get('p').S,null);
+const doubled={w:.5,weights:{dental:90,medical:30,local:60,flow:20}};near(M.calculate(d,doubled).byNode.get('a').S,M.calculate(d,config(.5)).byNode.get('a').S);
+for(const c of [{w:NaN,weights:M.defaults.weights},{w:2,weights:M.defaults.weights},{w:.5,weights:{dental:0,medical:0,local:0,flow:0}},{w:.5,weights:{...M.defaults.weights,flow:-1}}])assert.throws(()=>M.normalize(c));
+const before=JSON.stringify(d);M.calculate(d,config(.75));assert.equal(JSON.stringify(d),before);console.log('destination math: boundaries, missing data, shared cohort, ties, normalization, contributions, immutability passed');

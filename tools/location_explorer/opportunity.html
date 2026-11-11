@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>치과 공백 · 신규 진입 탐색</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="/style.css">
+<style>.metric-caption{max-width:1050px;margin:12px 24px;color:var(--muted)}.gap-tag{color:#9b640d}.opportunity-detail{padding:20px 24px}#runInfo{padding:14px 24px;background:white}#method{display:block}#method summary{cursor:pointer}#map{height:530px}.sidebar{max-height:calc(100vh - 140px)}.legend{padding:8px 24px;background:white;font-size:12px}.error{padding:16px}a{color:var(--accent)}</style></head>
+<body><header><div><span class="brand">DENTAL / LOCATION LAB · 비교안</span><h1>치과가 없어도 후보로 남깁니다</h1></div><a href="/">기존 순위 · 생활권 합산 보기</a></header>
+<div class="notice"><strong>보류된 실험안 — 기본 순위로 사용하지 않습니다.</strong> <a href="/strategy.html">로컬 정착형 / 생활권 성장형으로 이동 →</a> · <a href="/">기본안 보기</a><br>범위 밖 유출과 상권 집적도 미반영으로 희소 거점이 과대평가될 수 있습니다. 원래 결과는 비교 기록으로 보존했습니다.</div>
+<details id="method"><summary>후보 선정·공급 보존·거리 가정</summary><div id="methodText"></div></details>
+<div class="workspace"><aside class="sidebar"><div class="filters">
+<label>탐색 지역<select id="region"><option>불러오는 중</option></select></label>
+<label>주소·도로명<input id="search" type="search" placeholder="명촌, 천상, 구영리…"></label>
+<label>정렬<select id="sort"><option value="score">신규 1명 몫 · 6km 비교안</option><option value="score_3km">신규 1명 몫 · 3km 비교안</option><option value="population_1km">1km 주민 규모</option><option value="gap_population_1km">1km 접근성 공백 주민</option></select></label>
+<label>공백 유형<select id="filter"><option value="">전체 후보</option><option value="recovered">의료·분양 조건 해제로 복원된 후보</option><option value="no_dental">거점 500m 내 치과의사 수 >0 관측 치과 없음</option><option value="no_medical">거점 300m 내 의과·한의 없음</option></select></label>
+<p class="caption">치과 유무는 필터일 뿐 후보 생성 조건이 아닙니다. 인구·생활서비스·독립 좌표·업종 다양성의 기존 최소기준은 유지합니다.</p><div id="listStatus" role="status" aria-live="polite"></div></div><div id="list"></div><button id="more" hidden>더 보기</button></aside>
+<main><div class="mapbar"><div><span class="eyebrow">주민 수요 → 가상 개원 → 경쟁 재배분</span><strong id="mapTitle">울산 비교</strong></div><label>인구점<select id="popMode"><option value="entry">신규 1명 몫 기여도</option><option value="gap">기존 치과 접근성 공백</option><option value="residents">원래 주민</option><option value="off">끄기</option></select></label></div>
+<div id="map" aria-label="치과 공백 후보 지도"></div><div class="legend">청록: 선택 상업 거점 · 황색: 의료·분양 조건 해제 후보 · 적색: 기존 치과(병원 포함) · 인구점은 200m 표시 집계</div>
+<div id="runInfo" role="status" aria-live="polite">후보를 선택하세요.</div><div id="detail" class="opportunity-detail"></div></main></div>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script><script src="/opportunity.js"></script></body></html>
