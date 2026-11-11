@@ -1,0 +1,32 @@
+name: Verify demos and tests
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run the synthetic data pipeline
+        run: python3 tools/run_m1_gate.py
+      - name: Build and verify the offline report
+        run: |
+          python3 tools/run_population_demand_demo.py
+          python3 tests/test_population_demand_demo.py
+      - name: Install test and geography dependencies
+        run: python3 -m pip install -r requirements-test.lock -r tools/location_explorer/requirements.txt
+      - name: Run pipeline and demand tests
+        run: python3 -m pytest -q
+      - name: Run explorer calculations
+        run: python3 -m unittest discover -s tools/location_explorer -p 'test_*.py'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run browser-side scenario tests
+        run: node --test tools/location_explorer/test_*.js
