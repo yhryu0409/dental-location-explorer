@@ -1,0 +1,18 @@
+{
+  "contract": "population-demand-mvp-v1",
+  "distance_bands_m": [[500, 1.0], [1000, 0.7], [2000, 0.3], [3000, 0.1]],
+  "outside_weight": 1.0,
+  "food_reference_count": 100,
+  "food_signal_cap": 3.0,
+  "food_diversity_bonus": 0.1,
+  "food_density_bonus": 0.1,
+  "food_density_reference_per_km2": 100,
+  "scenarios": {"off": 0.0, "weak": 0.25, "medium": 0.5, "strong": 1.0},
+  "age_keys": ["0_14", "15_29", "30_49", "50_64", "65_plus"],
+  "profiles": {
+    "family": {"age_weights": [1.2, 0.7, 1.2, 0.8, 0.6], "food_response": 0.3},
+    "prosthetic": {"age_weights": [0.2, 0.3, 0.6, 1.2, 1.5], "food_response": 0.2},
+    "aesthetic": {"age_weights": [0.3, 1.2, 1.3, 0.8, 0.4], "food_response": 0.7}
+  },
+  "interpretation": "All weights are editable scenario assumptions, not fitted utilization rates. Demand units are relative weighted-person units, not patients, visitors, or revenue."
+}

@@ -1,0 +1,243 @@
+{
+  "mode": "synthetic_demo",
+  "description": "All population, residential supports, markets, and events are synthetic demonstration inputs, not findings.",
+  "markets": [
+    {
+      "market_area_id": "demo_neighborhood",
+      "label": "가상 주거형 상권",
+      "longitude": 129.0,
+      "latitude": 35.2,
+      "food_count": 20,
+      "food_category_counts": {
+        "한식": 10,
+        "카페": 5,
+        "기타": 5
+      },
+      "area_km2": 0.15,
+      "source_as_of": "2026-06-30",
+      "region_codes": [
+        "26320"
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              128.998,
+              35.198
+            ],
+            [
+              129.002,
+              35.198
+            ],
+            [
+              129.002,
+              35.202000000000005
+            ],
+            [
+              128.998,
+              35.202000000000005
+            ],
+            [
+              128.998,
+              35.198
+            ]
+          ]
+        ]
+      },
+      "commercial_events": {
+        "start": "2025-06-30",
+        "end": "2026-06-30",
+        "same_boundary": true,
+        "opened": 12,
+        "closed": 7,
+        "opening_stock": 15
+      }
+    },
+    {
+      "market_area_id": "demo_hub",
+      "label": "가상 음식 집적 상권",
+      "longitude": 129.008,
+      "latitude": 35.202,
+      "food_count": 180,
+      "food_category_counts": {
+        "한식": 70,
+        "카페": 40,
+        "주점": 30,
+        "기타": 40
+      },
+      "area_km2": 0.15,
+      "source_as_of": "2026-06-30",
+      "region_codes": [
+        "26320"
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              129.006,
+              35.199999999999996
+            ],
+            [
+              129.01000000000002,
+              35.199999999999996
+            ],
+            [
+              129.01000000000002,
+              35.204
+            ],
+            [
+              129.006,
+              35.204
+            ],
+            [
+              129.006,
+              35.199999999999996
+            ]
+          ]
+        ]
+      },
+      "commercial_events": {
+        "start": "2025-06-30",
+        "end": "2026-06-30",
+        "same_boundary": true,
+        "opened": 12,
+        "closed": 7,
+        "opening_stock": 175
+      }
+    },
+    {
+      "market_area_id": "demo_fringe",
+      "label": "가상 저밀도 상권",
+      "longitude": 129.02,
+      "latitude": 35.208,
+      "food_count": 5,
+      "food_category_counts": {
+        "한식": 5
+      },
+      "area_km2": 0.15,
+      "source_as_of": "2026-06-30",
+      "region_codes": [
+        "26320"
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              129.018,
+              35.205999999999996
+            ],
+            [
+              129.02200000000002,
+              35.205999999999996
+            ],
+            [
+              129.02200000000002,
+              35.21
+            ],
+            [
+              129.018,
+              35.21
+            ],
+            [
+              129.018,
+              35.205999999999996
+            ]
+          ]
+        ]
+      },
+      "commercial_events": {
+        "start": "2025-06-30",
+        "end": "2026-06-30",
+        "same_boundary": true,
+        "opened": 12,
+        "closed": 7,
+        "opening_stock": 1
+      }
+    }
+  ],
+  "populations": [
+    {
+      "admin_code": "2632051000",
+      "source_as_of": "202608",
+      "age_population": {
+        "0_14": 1200,
+        "15_29": 1500,
+        "30_49": 2200,
+        "50_64": 1700,
+        "65_plus": 1400
+      }
+    },
+    {
+      "admin_code": "2632052000",
+      "source_as_of": "202608",
+      "age_population": {
+        "0_14": 600,
+        "15_29": 900,
+        "30_49": 1300,
+        "50_64": 1500,
+        "65_plus": 1700
+      }
+    }
+  ],
+  "residential_support": {
+    "areas": {
+      "2632051000": {
+        "complete": true,
+        "weight_basis": "dwelling_units",
+        "source_as_of": "202608"
+      },
+      "2632052000": {
+        "complete": true,
+        "weight_basis": "dwelling_units",
+        "source_as_of": "202608"
+      }
+    },
+    "cells": [
+      {
+        "cell_id": "2632051000-0",
+        "admin_code": "2632051000",
+        "longitude": 129.0,
+        "latitude": 35.2,
+        "weight": 100
+      },
+      {
+        "cell_id": "2632051000-1",
+        "admin_code": "2632051000",
+        "longitude": 129.005,
+        "latitude": 35.202,
+        "weight": 200
+      },
+      {
+        "cell_id": "2632051000-2",
+        "admin_code": "2632051000",
+        "longitude": 129.012,
+        "latitude": 35.203,
+        "weight": 100
+      },
+      {
+        "cell_id": "2632052000-0",
+        "admin_code": "2632052000",
+        "longitude": 129.015,
+        "latitude": 35.208,
+        "weight": 150
+      },
+      {
+        "cell_id": "2632052000-1",
+        "admin_code": "2632052000",
+        "longitude": 129.02,
+        "latitude": 35.208,
+        "weight": 100
+      },
+      {
+        "cell_id": "2632052000-2",
+        "admin_code": "2632052000",
+        "longitude": 129.05,
+        "latitude": 35.23,
+        "weight": 150
+      }
+    ]
+  }
+}
